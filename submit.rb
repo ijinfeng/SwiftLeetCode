@@ -1,8 +1,8 @@
 
 #! /usr/bin/ruby
 
-info = system('git status')
-puts "----> #{info}"
+system('git status')
+puts "----> Start upload to github"
 system('git add .')
 
 cur_path = Dir.pwd

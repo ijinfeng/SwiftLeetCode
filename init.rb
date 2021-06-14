@@ -29,7 +29,28 @@ Dir.mkdir(target_dir_path)
 puts "Create dir named: #{name} success!"
 
 if not File.exist?(target_dir_path + '/MyPlayground.playground')
-    f=File.new(target_dir_path + '/MyPlayground.playground', 'w+')
+    playground_dir = target_dir_path + '/MyPlayground.playground'
+    Dir.mkdir(playground_dir)
+    # Contents.swift
+    # contents.xcplayground
+    # timeline.xctimeline
+    File.open(playground_dir + '/Contents.swift', 'w+') do |f|
+        f.write('import UIKit')
+    end
+    File.open(playground_dir + '/contents.xcplayground', 'w+') do |f|
+        f.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>
+        <playground version='5.0' target-platform='ios' buildActiveScheme='true' executeOnSourceChanges='false' importAppTypes='true'>
+            <timeline fileName='timeline.xctimeline'/>
+        </playground>")
+    end
+    File.open(playground_dir + '/timeline.xctimeline', 'w+') do |f|
+        f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+        <Timeline
+           version = \"3.0\">
+           <TimelineItems>
+           </TimelineItems>
+        </Timeline>")
+    end
     puts "Create file MyPlayground.playground"
 end
 
