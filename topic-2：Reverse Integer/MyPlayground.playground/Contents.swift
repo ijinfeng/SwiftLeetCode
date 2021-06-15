@@ -41,17 +41,22 @@ import UIKit
 -123 % 10
 
 
+let a = Int32.max
+
+let b = pow(2, 31) - 1
+
 func reverse(_ x: Int) -> Int {
     var res = 0
     var y = x
-    res = y % 10
-    y /= 10
     
-    while x >= 0 ? y > 0 : y < 0 {
+    while y != 0 {
         res = res * 10 + y % 10
+        if res > Int32.max || res < Int32.min {
+            return 0
+        }
         y /= 10
     }
-    
+
     return res
 }
 
@@ -59,3 +64,4 @@ reverse(123)
 reverse(-123)
 reverse(0)
 reverse(120)
+reverse(1534236469)
