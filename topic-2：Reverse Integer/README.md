@@ -37,16 +37,17 @@
 解：
 ```
 func reverse(_ x: Int) -> Int {
-    var res = 0
+var res = 0
     var y = x
-    res = y % 10
-    y /= 10
     
-    while x >= 0 ? y > 0 : y < 0 {
+    while y != 0 {
         res = res * 10 + y % 10
+        if res > Int32.max || res < Int32.min {
+            return 0
+        }
         y /= 10
     }
-    
+
     return res
 }
 ```
