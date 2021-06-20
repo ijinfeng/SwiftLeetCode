@@ -24,4 +24,4 @@ Dir.foreach(cur_path) do |x|
 end
 
 system("git commit -m 'submit: #{name}'")
-system('git push origin main')
+system("git pull --rebase && git push origin main")
