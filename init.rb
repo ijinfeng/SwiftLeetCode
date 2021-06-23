@@ -4,7 +4,7 @@ puts "Input topic name:"
 
 name = gets.chomp
 
-cur_path = Dir.pwd
+cur_path = Dir.pwd + '/topics/'
 
 puts "Current path: #{cur_path}"
 
@@ -59,4 +59,6 @@ if not File.exist?(target_dir_path + '/README.md')
     f=File.new(target_dir_path + '/README.md', 'w+')
     puts "Create file README.md"
 end
+
+system("open #{target_dir_path + '/MyPlayground.playground'}")
 

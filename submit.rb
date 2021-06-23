@@ -5,7 +5,7 @@ system('git status')
 puts "----> Start upload to github"
 system('git add .')
 
-cur_path = Dir.pwd
+cur_path = Dir.pwd + '/topics/'
 
 max = 0
 name = 'topic-?'
