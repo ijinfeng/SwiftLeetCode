@@ -14,8 +14,9 @@ Dir.foreach(cur_path) do |x|
         next
     end
     if File.directory?(cur_path + "/#{x}") and x.match('topic*')
-        #topic-
-        n = x[6,1]
+        #topic-x：
+        topic = x.split('：').first
+        n = topic.sub('topic-', '')
         if n.to_i > max.to_i 
             max = n
             name = x
