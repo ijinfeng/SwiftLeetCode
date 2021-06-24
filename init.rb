@@ -60,5 +60,6 @@ if not File.exist?(target_dir_path + '/README.md')
     puts "Create file README.md"
 end
 
-system("open #{target_dir_path + '/MyPlayground.playground'}")
+# open "file_path", 处理文件名带有空格的问题
+system("open \"#{target_dir_path + '/MyPlayground.playground'}\"")
 
