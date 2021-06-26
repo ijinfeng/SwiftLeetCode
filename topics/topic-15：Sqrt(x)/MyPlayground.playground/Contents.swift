@@ -23,28 +23,56 @@ import UIKit
 
 // ans^2 <= x
 // 二分法
+//func mySqrt(_ x: Int) -> Int {
+//    var l = 0
+//    var r = x
+//    var ans = -1
+//    while l <= r {
+//        let mid = l + (r - l) / 2
+//        if mid * mid <= x {
+//            ans = mid
+//            l = mid + 1
+//        } else {
+//            r = mid - 1
+//        }
+//        print("mid=\(mid),left=\(l),right=\(r),ans=\(ans)")
+//    }
+//    return ans
+//}
+
+
+// 牛顿迭代法
+// https://leetcode-cn.com/problems/sqrtx/solution/niu-dun-die-dai-fa-by-loafer/
 func mySqrt(_ x: Int) -> Int {
-    var l = 0
-    var r = x
-    var ans = -1
-    while l <= r {
-        let mid = l + (r - l) / 2
-        if mid * mid <= x {
-            ans = mid
-            l = mid + 1
-        } else {
-            r = mid - 1
-        }
-        print("mid=\(mid),left=\(l),right=\(r),ans=\(ans)")
+//    print("        ")
+    let c = x
+    var res = x
+    while x / res < res {
+        res = (res + c / res) / 2
     }
-    return ans
+//    var b = 0
+//    while b < res {
+//        res = (res + c / res) / 2
+//        b = x / res
+//        print("res= \(res), b=\(b)")
+//    }
+    
+    return res
 }
 
 
-//mySqrt(4)
-//mySqrt(9)
-mySqrt(10)
-//mySqrt(3)
+// y = 2xXi - x^2 + C
+// y = 2xXj
+// 2xXj = 2xXi - x^2 + C
+// f(x) = 2x(Xj - 2xXi) + x^2 - C
 
-//mySqrt(189)
+// (x+C/x)/2
+
+
+mySqrt(4)
+mySqrt(9)
+mySqrt(10)
+mySqrt(3)
+
+mySqrt(189)
 
