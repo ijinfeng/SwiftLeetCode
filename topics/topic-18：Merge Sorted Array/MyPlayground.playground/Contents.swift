@@ -13,34 +13,44 @@ import UIKit
 /*
  输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
  输出：[1,2,2,3,5,6]
+ 
+ 输入：nums1 = [2,0], m = 1, nums2 = [1], n = 1
+ 输出：[1,2]
+ 
+ 输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [-2,0,2], n = 3
+ 输出：[-2,0,1,2,2,3]
  */
 
 func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
-    var p1 = nums1.count - n - 1
+    var p1 = m - 1
     var p2 = n - 1
     for i in stride(from: m + n - 1, through: 0, by: -1) {
         if p2 < 0 {
             break
         }
         if p1 < 0 {
-            p1 = 0
-        }
-        if nums1[p1] < nums2[p2] {
             nums1[i] = nums2[p2]
             p2 -= 1
         } else {
-            let t = nums1[p1]
-            nums1[i] = t
-            nums1[p1] = 0
-            p1 -= 1
+            if nums1[p1] < nums2[p2] {
+                nums1[i] = nums2[p2]
+                p2 -= 1
+            } else {
+                nums1[i] = nums1[p1]
+                p1 -= 1
+            }
         }
     }
 }
 
 //var nums = [1,2,3,0,0,0]
 //merge(&nums, 3, [2,5,6], 3)
-//nums
 
-var nums = [2,0]
-merge(&nums, 1, [1], 1)
+//var nums = [2,0]
+//merge(&nums, 1, [1], 1)
+
+var nums = [1,2,3,0,0,0]
+merge(&nums, 3, [-2,0,2], 3)
+
+
 nums
