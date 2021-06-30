@@ -1,7 +1,7 @@
 
 #! /usr/bin/ruby
 
-system('git status')
+system('git status -s')
 puts "----> Start upload to github"
 system('git add .')
 
