@@ -1,10 +1,34 @@
 #! /usr/bin/ruby
 
-puts "Input topic name:"
+append = ARGV.first
+type = ''
+# e,m,h | easy,meduim,hard
+if append.nil?
+    type = 'easy'
+else
+    if append == 'e' || append == 'easy'
+        type = 'easy'
+    elsif append == 'm' || append == 'meduim'
+        type = 'meduim'
+    elsif append == 'h' || append == 'hard'
+        type = 'hard'
+    else
+        type = append.to_s
+    end
+end
 
-name = gets.chomp
+puts "Current difficulty is [#{type}]"
+
+puts ">>> Input topic name:"
+# [解决 ARGV 和 gets 一起使用的问题]https://blog.csdn.net/ye_i_qi/article/details/51775992 
+name = $stdin.gets.chomp
 
 cur_path = Dir.pwd + '/topics/'
+
+# 判断是否存在这个路径，没有则创建
+if not File.exist? cur_path
+    Dir.mkdir cur_path
+end
 
 puts "Current path: #{cur_path}"
 
@@ -24,7 +48,7 @@ Dir.foreach(cur_path) do |x|
     end
 end
 
-target_dir_path = cur_path + "/topic-#{max.to_i+1}：#{name}"
+target_dir_path = cur_path + "/topic-#{max.to_i+1}：[#{type}]#{name}"
 Dir.mkdir(target_dir_path)
 
 puts "Create dir named: #{name} success!"
@@ -60,6 +84,7 @@ if not File.exist?(target_dir_path + '/README.md')
     puts "Create file README.md"
 end
 
+puts 'Start open MyPlayground.playground'
 # open "file_path", 处理文件名带有空格的问题
 system("open \"#{target_dir_path + '/MyPlayground.playground'}\"")
 
