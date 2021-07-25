@@ -1,6 +1,7 @@
 #! /usr/bin/ruby
 
 require 'xcodeproj'
+require_relative './log_color'
 
 append = ARGV.first
 type = ''
@@ -19,7 +20,7 @@ else
     end
 end
 
-puts "Current difficulty is [#{type}]"
+puts "Current difficulty is " + color_text("[#{type}]", Color.white)
 
 puts ">>> Input topic name:"
 # [解决 ARGV 和 gets 一起使用的问题]https://blog.csdn.net/ye_i_qi/article/details/51775992 
@@ -38,11 +39,11 @@ DESC
 proj_type = $stdin.gets.chomp
 
 if proj_type.to_i == 1 
-    puts "You select 'playground' to create the project"
+    puts "You select " + color_text('playground', Color.white) + " to create the project"
 elsif proj_type.to_i == 2
-    puts "You select 'xcodeproj' to create the project"
+    puts "You select " + color_text('xcodeproj', Color.white) + " to create the project"
 else
-    puts "Unknow type: #{proj_type}"
+    puts "Unknow type: " + color_text("#{proj_type}", Color.red)
     exit 1
 end
 
@@ -140,11 +141,11 @@ if not File.exist?(target_dir_path + '/README.md')
 end
 
 if proj_type.to_i == 1 # playground
-    puts 'Start open MyPlayground.playground'
+    puts color_text('Start open MyPlayground.playground', Color.green)
     # open "file_path", 处理文件名带有空格的问题
     system("open \"#{target_dir_path + '/MyPlayground.playground'}\"")
 elsif proj_type.to_i == 2 # xcodeproj
-    puts 'Start open My.xcodeproj'
+    puts color_text('Start open My.xcodeproj', Color.green)
     # open "file_path", 处理文件名带有空格的问题
     system("open \"#{target_dir_path + '/my.xcodeproj'}\"")
 else
