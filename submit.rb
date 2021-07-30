@@ -1,8 +1,10 @@
 
 #! /usr/bin/ruby
 
+require_relative './log_color'
+
 system('git status -s')
-puts "----> Start upload to github"
+puts color_text("----> Start upload to github", Color.white)
 system('git add .')
 
 cur_path = Dir.pwd + '/topics/'

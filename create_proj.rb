@@ -63,7 +63,6 @@ def create_proj(target_dir_path=nil, proj_type=1)
         File.open(main_file_path, 'w+') do |f|
             f.write('import Foundation')
             f.write("\n\n")
-            f.write "print(\"Hello world!\")"
         end
 
         puts "Create file main.swift"
