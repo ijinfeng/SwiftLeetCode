@@ -1,4 +1,4 @@
-
+ 
 #! /usr/bin/ruby
 
 require_relative './log_color'
