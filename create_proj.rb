@@ -92,3 +92,4 @@ def create_proj(target_dir_path=nil, proj_type=1)
     # open "file_path", 处理文件名带有空格的问题
     system("open \"#{target_dir_path + '/' + file_name}\"")
 end
+
