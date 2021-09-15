@@ -24,5 +24,8 @@ class Solution {
 }
 
 let s = Solution()
-let res = s.numTrees(3)
-print(res)
+for _ in 0..<10000 {
+    let res = s.numTrees(3)
+    print(res)
+}
+
