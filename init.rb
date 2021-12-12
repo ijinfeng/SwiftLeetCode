@@ -21,6 +21,8 @@ else
     end
 end
 
+system("git pull --rebase")
+
 puts "Current difficulty is " + color_text("[#{type}]", Color.white)
 
 puts ">>> Input topic name:"
